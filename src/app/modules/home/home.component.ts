@@ -3,6 +3,8 @@ import { GiphyService } from '../../core/services/giphy.service';
 import { renderGif, renderGrid } from '@giphy/js-components';
 import { GiphyFetch } from '@giphy/js-fetch-api'
 import { throttle } from 'throttle-debounce';
+import { MatDialog } from '@angular/material/dialog';
+import { GifModalComponent } from 'src/app/shared/components/gif-modal/gif-modal.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,12 +13,18 @@ import { throttle } from 'throttle-debounce';
 export class HomeComponent implements OnInit {
   offset = 0;
   gifs: any = [];
-  constructor(private giphyService: GiphyService) {
+  constructor(private giphyService: GiphyService, public dialog: MatDialog) {
   }
-  vanillaJSGif = async (gif: any, mountNode: HTMLElement,) => {
-    // render a single gif
-    renderGif({ gif: gif, width: 300 }, mountNode)
+  openDialog(gif: any): void {
+    const dialogRef = this.dialog.open(GifModalComponent, {
+      data: { gif },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
+
   makeGrid = (targetEl: HTMLElement) => {
     const render = () => {
       // here is the @giphy/js-components import
@@ -27,8 +35,10 @@ export class HomeComponent implements OnInit {
           columns: innerWidth < 1000 ? 2 : innerWidth > 1500 ? 4 : 3,
           gutter: 6,
           noLink: true,
+          hideAttribution: true,
           onGifClick: (gif: any) => {
             console.log(gif)
+            this.openDialog(gif)
           },
         },
         targetEl
@@ -49,6 +59,6 @@ export class HomeComponent implements OnInit {
     this.offset += 10;
     console.log(this.gifs)
     // this.vanillaJSGif(this.gifs[0], document.getElementById('gif')!)
-    this.makeGrid(document.getElementById('gif')!)
+    this.makeGrid(document.getElementById('grid')!)
   }
 }

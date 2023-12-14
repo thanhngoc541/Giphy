@@ -1,0 +1,18 @@
+<mat-icon mat-dialog-close class="icon-close">close</mat-icon>
+<h1 mat-dialog-title>{{ gif.title }}</h1>
+<div mat-dialog-content id="gif"></div>
+<div mat-dialog-content class="grid-container-2">
+  <div>
+    <p>
+      Source: {{ gif.images.original.width }} x
+      {{ gif.images.original.height }} px
+    </p>
+    <p>Frame: {{ gif.images.original.frames }}</p>
+    <p>Size: {{ gif.images.original.size | filesize }}</p>
+  </div>
+  <div>
+    <p>Rating: {{ gif.rating }}</p>
+    <p>Trending: {{ gif.trending_datetime | date }}</p>
+    <p>Uploaded: {{ gif.import_datetime | date }}</p>
+  </div>
+</div>

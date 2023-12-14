@@ -1,0 +1,7 @@
+.grid-container-2{
+    display: grid; grid-template-columns: auto auto
+}
+.icon-close{
+    position: absolute; right: 20px; top: 20px;
+    z-index: 1;
+}
