@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/thr"
+  publish = "dist/giphy"
   command = "ng build"
 [[redirects]]
   from = "/*"
