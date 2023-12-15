@@ -1,5 +1,13 @@
 # Giphy
 
+<img width="1440" alt="image" src="https://github.com/thanhngoc541/Giphy/assets/53690049/8465c9f9-3f39-43fb-ad8b-8692d4f84da8">
+<img width="1438" alt="image" src="https://github.com/thanhngoc541/Giphy/assets/53690049/7fe872d3-67c7-4d82-ae0e-e60a0751512e">
+<img width="1438" alt="image" src="https://github.com/thanhngoc541/Giphy/assets/53690049/e2f7494e-b2f4-4d71-96fb-0ac8e15118f9">
+
+
+# Deloyed Link
+https://my-giphy.netlify.app/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
 ## Development server
