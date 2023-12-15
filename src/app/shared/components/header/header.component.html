@@ -6,17 +6,8 @@
       : 'background-color: rgba(0, 0, 0, 0.5)'
   "
 >
-  <div
-    style="
-      height: 60px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 10px 100px;
-      position: relative;
-      text-align: right;
-    "
-  >
-    <div style="height: 40px; float: left; display: flex; padding: 10px 0">
+  <div class="header-content">
+    <div class="logo" (click)="redirect('/')">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 28 35"
@@ -47,7 +38,11 @@
       </svg>
     </div>
     <form (onsubmit)="search()" class="search-form" [formGroup]="form">
-      <mat-form-field class="form-field" appearance="fill">
+      <mat-form-field
+        style="margin-bottom: -1.25em"
+        class="form-field"
+        appearance="fill"
+      >
         <input
           formControlName="searchString"
           matInput
@@ -98,4 +93,4 @@
     </button>
   </div>
 </div>
-<div *ngIf="isStartWithImg === false" style="height: 80px"></div>
+<div *ngIf="isStartWithImg === false" class="offset" style="height: 80px"></div>

@@ -14,9 +14,13 @@ export class SearchComponent implements OnInit {
   constructor(private giphyService: GiphyService, private route: ActivatedRoute,) {
     //Update list gifs when searching changes
     this.route.params.subscribe((param: any) => {
-      this.searchString = param.searchString
-      this.grid.remove();
-      this.grid = this.giphyService.makeGrid(document.getElementById('search')!, this.giphyService.search(this.searchString))
+        this.searchString = param.searchString
+      this.grid?.remove();
+      this.grid = this.giphyService.makeGrid(
+        document.getElementById('search')!,
+        (this.searchString && this.searchString.length > 0)
+          ? this.giphyService.search(this.searchString) :
+          this.giphyService.fetchTrendingGifs)
     });
   }
 

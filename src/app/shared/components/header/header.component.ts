@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit {
 
   }
   search() {
-    this.router.navigate(['/search/', this.form.value.searchString]);
+    if (this.form.value.searchString && this.form.value.searchString.length > 0)
+      this.router.navigate(['/search/', this.form.value.searchString]);
 
   }
   redirect(url: string) {
