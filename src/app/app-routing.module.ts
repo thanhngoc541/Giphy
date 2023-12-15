@@ -6,6 +6,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
   },
+  { path: 'search/:searchString', loadChildren: () => import('./modules/search/search.module').then(m => m.SearchModule) },
 ];
 
 @NgModule({

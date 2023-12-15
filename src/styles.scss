@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; background-color: black;}
+html, body { height: 100%; background-color: black; color: white    ;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.session{
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    // padding: 0 100px;
+    background-color: black;
+    margin: auto;
+}
+.grid{
+    margin: auto;
+}
+.session h1{
+    text-align: left;
+    padding: 20px;
+    padding-left: 0;
+    padding-top: 50px;
+    font-size: 32px;
+    color: white;
+}

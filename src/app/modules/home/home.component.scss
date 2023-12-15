@@ -20,7 +20,7 @@
     color: white;
     text-align: center;
     font-family: "Playfair Display",sans-serif;
-    font-size: 80px;
+    font-size: 60px;
     font-weight: 500;
 }
 
@@ -33,31 +33,15 @@
     color: white;
     text-align: center;
     font-family: serif;
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 500;
 }
 .landing-content img{
     height: 200px;
 }
-#trending{
-    text-align: center;
-    width: 100%;
-    max-width: 1200px;
-    background-color: black;
-    margin: auto;
-}
-#grid{
-    margin: auto;
-}
-#trending h1{
-    text-align: left;
-    padding: 20px;
-    padding-top: 50px;
-    font-size: 32px;
-    color: white;
-}
+
 .toggle-button{
-    float: right;
+    margin: 0 0 50px 0 ;
     font-size: 16px;
 }
 

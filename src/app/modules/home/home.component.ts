@@ -12,25 +12,22 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  offset = 0;
   grid: any;
   formControl = new FormControl('gifs');
   constructor(private giphyService: GiphyService) {
+
+    //Update list trending when type is changed
     this.formControl.valueChanges.subscribe(() => {
-      console.log(this.formControl.value)
       switch (this.formControl.value) {
         case 'gifs':
-          console.log("1")
           this.grid.remove();
           this.giphyService.makeGrid(document.getElementById('grid')!, this.giphyService.fetchTrendingGifs)
           break;
         case 'stickers':
-          console.log("2")
           this.grid.remove();
           this.giphyService.makeGrid(document.getElementById('grid')!, this.giphyService.fetchTrendingStickers)
           break;
         case 'videos':
-          console.log("3")
           this.grid.remove();
           this.giphyService.makeGrid(document.getElementById('grid')!, this.giphyService.fetchTrendingVideos)
           break;
@@ -41,6 +38,7 @@ export class HomeComponent implements OnInit {
 
 
   async ngOnInit(): Promise<void> {
+    //Init list trending gifs
     this.grid = this.giphyService.makeGrid(document.getElementById('grid')!, this.giphyService.fetchTrendingGifs)
   }
 }

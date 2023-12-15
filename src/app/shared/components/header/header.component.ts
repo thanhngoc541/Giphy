@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,15 +11,17 @@ export class HeaderComponent implements OnInit {
   @Input() isStartWithImg = false;
 
   organization: any = null;
-  tabs: any = [{ name: 'Home', slug: 'home' }];
+  tabs: any = [{ name: 'Home', slug: '/' }];
   scrolled: boolean = false;
-  constructor(private router: Router) {
+  form = this.formBuilder.group({
+    searchString: ['', []],
+  });
+  constructor(private router: Router, private formBuilder: FormBuilder,) {
     this.scrolled = window.pageYOffset > 100;
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    console.log("scrolling", window.pageYOffset)
     this.scrolled = window.pageYOffset > 100;
   }
   goToLink(url: string) {
@@ -27,7 +30,10 @@ export class HeaderComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
   }
+  search() {
+    this.router.navigate(['/search/', this.form.value.searchString]);
 
+  }
   redirect(url: string) {
     this.router.navigate(['/', url]);
   }

@@ -11,11 +11,18 @@ import { throttle } from 'throttle-debounce';
 export class GiphyService {
   gf = new GiphyFetch('0qV1NdHQWsb7NXV5B4meLUbdTAPI8HOD')
   constructor(public dialog: MatDialog) { }
+  fetchCategories = () => this.gf.categories()
+  fetchSubCategories = (category: string) => this.gf.subcategories(category)
+  fetchReactionGifs = (offset: number) => this.gf.channels('reactions')
   fetchTrendingGifs = (offset: number) => this.gf.trending({ type: 'gifs', offset, limit: 10 })
   fetchTrendingStickers = (offset: number) => this.gf.trending({ type: 'stickers', offset, limit: 10 })
   fetchTrendingVideos = (offset: number) => this.gf.trending({ type: 'videos', offset, limit: 10 })
   fetchAnimate = (string: string) => this.gf.animate(string, { limit: 10 })
 
+  search(searchString: string) {
+    return (offset: number) => this.gf.search(searchString, { offset, limit: 10 })
+  }
+  //Render gifs list
   makeGrid = (targetEl: HTMLElement, fetchGifs: any) => {
     const render = () => {
       // here is the @giphy/js-components import
@@ -28,7 +35,6 @@ export class GiphyService {
           noLink: true,
           hideAttribution: true,
           onGifClick: (gif: any) => {
-            console.log(gif)
             this.openDialog(gif)
           },
         },
@@ -45,13 +51,14 @@ export class GiphyService {
       },
     }
   }
+
+  //Popup modal when clicking on Gif
   openDialog(gif: any): void {
     const dialogRef = this.dialog.open(GifModalComponent, {
       data: { gif },
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 }

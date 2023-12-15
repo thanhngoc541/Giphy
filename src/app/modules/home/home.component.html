@@ -12,7 +12,7 @@
       Find everything from funny GIFs, reaction GIFs, unique GIFs and more.
     </p>
     <a
-      href="#trending"
+      href="#trending-session"
       style="
         font-size: 24px;
         font-weight: 400;
@@ -25,8 +25,8 @@
     >
   </div>
 </div>
-<div id="trending">
-  <h1>
+<div id="trending-session" class="session">
+  <h1 style="text-align: center">
     <svg
       style="margin-right: 10px"
       width="22"
@@ -66,16 +66,17 @@
       </g>
     </svg>
     Trending
-    <mat-button-toggle-group
-      [formControl]="formControl"
-      class="toggle-button"
-      name="type"
-      aria-label="Type"
-    >
-      <mat-button-toggle value="gifs">Gifs</mat-button-toggle>
-      <mat-button-toggle value="stickers">Stickers</mat-button-toggle>
-      <mat-button-toggle value="videos">Videos</mat-button-toggle>
-    </mat-button-toggle-group>
   </h1>
-  <div id="grid"></div>
+  <mat-button-toggle-group
+    [formControl]="formControl"
+    class="toggle-button"
+    name="type"
+    aria-label="Type"
+  >
+    <mat-button-toggle value="gifs">Gifs</mat-button-toggle>
+    <mat-button-toggle value="stickers">Stickers</mat-button-toggle>
+    <mat-button-toggle value="videos">Videos</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <div id="grid" class="grid"></div>
 </div>
